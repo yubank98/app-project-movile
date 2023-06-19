@@ -1,0 +1,7 @@
+{
+  "name": "app-project-movile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
