@@ -16,6 +16,22 @@ const routes: Routes = [
   {
     path: 'add-assignment',
     loadChildren: () => import('./modal/add-assignment/add-assignment.module').then( m => m.AddAssignmentPageModule)
+  },
+  {
+    path: 'list-assignment',
+    loadChildren: () => import('./modal/list-assignment/list-assignment.module').then( m => m.ListAssignmentPageModule)
+  },
+  {
+    path: 'list-teacher',
+    loadChildren: () => import('./modal/list-teacher/list-teacher.module').then( m => m.ListTeacherPageModule)
+  },
+  {
+    path: 'list-student',
+    loadChildren: () => import('./modal/list-student/list-student.module').then( m => m.ListStudentPageModule)
+  },
+  {
+    path: 'info-student',
+    loadChildren: () => import('./modal/info-student/info-student.module').then( m => m.InfoStudentPageModule)
   }
 
 ];

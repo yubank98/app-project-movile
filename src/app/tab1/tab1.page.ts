@@ -18,5 +18,7 @@ export class Tab1Page {
     await modal.present();
   }
 
+  async selectAssignment() {}
+
   async studentList() {}
 }
