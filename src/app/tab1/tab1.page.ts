@@ -10,7 +10,6 @@ import { DbService } from '../services/Db.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
-  students: any = []
 
   constructor(private modalCrtl: ModalController, public database: DbService) {
     this.database.createDatabase().then(() => {
@@ -22,6 +21,13 @@ export class Tab1Page implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  async addStudent() {
+    const modal = await this.modalCrtl.create({
+      component: AddStudentPage
+    });
+    await modal.present();
   }
 
   async selectAssignment() {}

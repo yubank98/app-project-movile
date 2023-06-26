@@ -1,16 +1,12 @@
 export interface Students {
-    cedula: string,
-    nombre: string,
-    apellido: string,
-    correo: string,
-    cursos: Assignment[]
-}
-
-export interface Course {
   id: number;
   name: string;
-  description: string;
-  teacher_id: number;
+  email: string;
+  phone: string;
+  career: string;
+  semester: string;
+}
+
 export interface Course {
   id: number;
   name: string;
@@ -24,13 +20,6 @@ export interface Teachers {
   email: string;
   phone: string;
   career: string;
-}
-
-export interface StudentCourse {
-  id: number;
-  student_id: number;
-  course_id: number;
-  note: number;
 }
 
 export interface StudentCourse {
