@@ -1,21 +1,30 @@
 export interface Students {
-    cedula: string,
-    nombre: string,
-    apellido: string,
-    correo: string,
-    cursos: Assignment[]
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  career: string;
+  semester: string;
 }
 
-export interface Assignment {
-    codigo: string,
-    nombre: string,
-    tipo: string,
-    profesor: Teachers
+export interface Course {
+  id: number;
+  name: string;
+  description: string;
+  teacher_id: number;
 }
 
 export interface Teachers {
-    cedula: string,
-    nombre: string,
-    apellido: string,
-    correo: string
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  career: string;
+}
+
+export interface StudentCourse {
+  id: number;
+  student_id: number;
+  course_id: number;
+  note: number;
 }
