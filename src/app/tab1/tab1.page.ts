@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { AddStudentPage } from '../modal/add-student/add-student.page';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +9,14 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private modalCrtl: ModalController) {}
 
+  async addStudent() {
+    const modal = await this.modalCrtl.create({
+      component: AddStudentPage
+    });
+    await modal.present();
+  }
+
+  async studentList() {}
 }

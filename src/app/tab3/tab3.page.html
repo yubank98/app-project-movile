@@ -1,17 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Cursos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Administrador de Cursos</ion-label>
+    </ion-list-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+    <ion-item>
+
+      <ion-button (click)="addAssignment()" expand="block" shape="round">
+        Agregar curso
+      </ion-button>
+
+    </ion-item>
+
+    <ion-item>
+
+      <ion-button (click)="assignmentList()" expand="block" shape="round">
+        Ver lista de cursos
+      </ion-button>
+
+    </ion-item>
+  </ion-list>
 </ion-content>
