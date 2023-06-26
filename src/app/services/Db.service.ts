@@ -27,13 +27,13 @@ export class DbService {
   async createTable(): Promise<void> {
     try {
       await this.databaseObj.executeSql(
-        `CREATE TABLE IF NOT EXISTS student (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(255), email varchar(255), phone varchar(255), career varchar(255), semester varchar(255))`,
+        `CREATE TABLE IF NOT EXISTS student (id INTEGER PRIMARY KEY, name varchar(255), email varchar(255), phone varchar(255), career varchar(255), semester varchar(255))`,
         []
       );
       alert('Table student created!');
 
       await this.databaseObj.executeSql(
-        `CREATE TABLE IF NOT EXISTS teacher (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(255), email varchar(255), phone varchar(255), career varchar(255))`,
+        `CREATE TABLE IF NOT EXISTS teacher (id INTEGER PRIMARY KEY, name varchar(255), email varchar(255), phone varchar(255), career varchar(255))`,
         []
       );
       alert('Table teacher created!');
@@ -56,6 +56,7 @@ export class DbService {
 
   // Create
   async addStudent(
+    id: string,
     name: string,
     email: string,
     phone: string,
@@ -64,8 +65,8 @@ export class DbService {
   ): Promise<void> {
     try {
       await this.databaseObj.executeSql(
-        `INSERT INTO student (name, email, phone, career, semester) VALUES (?, ?, ?, ?, ?)`,
-        [name, email, phone, career, semester]
+        `INSERT INTO student (id,name, email, phone, career, semester) VALUES (?, ?, ?, ?, ?, ?)`,
+        [id, name, email, phone, career, semester]
       );
       return alert('Student added!');
     } catch (e) {
@@ -131,10 +132,10 @@ export class DbService {
   
 
   // Create teacher
-  async addTeacher(name: string, email: string, phone: string, career: string): Promise<void> {
+  async addTeacher(id: string , name: string, email: string, phone: string, career: string): Promise<void> {
     try {
       await this.databaseObj.executeSql(
-        `INSERT INTO teacher (name, email, phone, career) VALUES (?, ?, ?, ?)`,
+        `INSERT INTO teacher (id,name, email, phone, career) VALUES (?, ?, ?, ?, ?)`,
         [name, email, phone, career]
       );
       alert('Teacher added!');
