@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-assignment',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddAssignmentPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalCrtl: ModalController) { }
 
   ngOnInit() {
+  }
+
+  closeTab() {
+    this.modalCrtl.dismiss();
   }
 
 }

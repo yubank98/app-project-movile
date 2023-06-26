@@ -1,13 +1,39 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>add-assignment</ion-title>
+    <ion-buttons slot="start" (click)="closeTab()">
+      <ion-icon slot="start" name="close"></ion-icon>
+    </ion-buttons>
+    <ion-title>Agregar curso</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">add-assignment</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list>
+
+    <ion-list-header>
+      <ion-label>Agregar curso nuevo</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-input label="Codigo" labelPlacement="stacked" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Nombre" labelPlacement="stacked" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Tipo" labelPlacement="stacked" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-select label="Profesor" labelPlacement="stacked" placeholder="Seleccione un profesor">
+        <ion-select-option value="1">Op#1</ion-select-option>
+        <ion-select-option value="2">Op#2</ion-select-option>
+        <ion-select-option value="3">Op#3</ion-select-option>
+        <ion-select-option value="4">Op#4</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+  </ion-list>
 </ion-content>
