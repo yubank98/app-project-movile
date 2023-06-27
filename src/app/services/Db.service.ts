@@ -30,25 +30,22 @@ export class DbService {
         `CREATE TABLE IF NOT EXISTS student (id INTEGER PRIMARY KEY, name varchar(255), email varchar(255), phone varchar(255), career varchar(255), semester varchar(255))`,
         []
       );
-      alert('Table student created!');
 
       await this.databaseObj.executeSql(
         `CREATE TABLE IF NOT EXISTS teacher (id INTEGER PRIMARY KEY, name varchar(255), email varchar(255), phone varchar(255), career varchar(255))`,
         []
       );
-      alert('Table teacher created!');
+
 
       await this.databaseObj.executeSql(
         `CREATE TABLE IF NOT EXISTS course (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(255), description varchar(255), teacher_id INTEGER, FOREIGN KEY(teacher_id) REFERENCES teacher(id))`,
         []
       );
-      alert('Table course created!');
 
       await this.databaseObj.executeSql(
         `CREATE TABLE IF NOT EXISTS student_course_note (id INTEGER PRIMARY KEY AUTOINCREMENT, student_id INTEGER, course_id INTEGER, note INTEGER, FOREIGN KEY(student_id) REFERENCES student(id), FOREIGN KEY(course_id) REFERENCES course(id))`,
         []
       );
-      alert('Table student_course created!');
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
     }
@@ -68,7 +65,6 @@ export class DbService {
         `INSERT INTO student (id,name, email, phone, career, semester) VALUES (?, ?, ?, ?, ?, ?)`,
         [id, name, email, phone, career, semester]
       );
-      return alert('Student added!');
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
     }
@@ -97,7 +93,6 @@ export class DbService {
         `UPDATE student SET name = ?, email = ?, phone = ?, career = ?, semester = ? WHERE id = ?`,
         [name, email, phone, career, semester, id]
       );
-      alert('Student updated!');
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
     }
@@ -108,7 +103,6 @@ export class DbService {
   async deleteStudent(id: number): Promise<void> {
     try {
       await this.databaseObj.executeSql(`DELETE FROM student WHERE id = ?`, [id]);
-      alert('Student deleted!');
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
     }
@@ -138,7 +132,6 @@ export class DbService {
         `INSERT INTO teacher (id,name, email, phone, career) VALUES (?, ?, ?, ?, ?)`,
         [name, email, phone, career]
       );
-      alert('Teacher added!');
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
     }
@@ -168,7 +161,6 @@ export class DbService {
         `UPDATE teacher SET name = ?, email = ?, phone = ?, career = ? WHERE id = ?`,
         [name, email, phone, career, id]
       );
-      alert('Teacher updated!');
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
     }
@@ -179,7 +171,6 @@ export class DbService {
   async deleteTeacher(id: number): Promise<void> {
     try {
       await this.databaseObj.executeSql(`DELETE FROM teacher WHERE id = ?`, [id]);
-      alert('Teacher deleted!');
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
     }
@@ -205,7 +196,6 @@ export class DbService {
         `INSERT INTO course (name, description, teacher_id) VALUES (?, ?, ?)`,
         [name, description, teacher_id]
       );
-      alert('Course added!');
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
     }
@@ -235,7 +225,6 @@ export class DbService {
         `UPDATE course SET name = ?, description = ?, teacher_id = ? WHERE id = ?`,
         [name, description, teacher_id, id]
       );
-      alert('Course updated!');
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
     }
@@ -246,7 +235,6 @@ export class DbService {
   async deleteCourse(id: number): Promise<void> {
     try {
       await this.databaseObj.executeSql(`DELETE FROM course WHERE id = ?`, [id]);
-      alert('Course deleted!');
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
     }
@@ -283,7 +271,6 @@ export class DbService {
         `INSERT INTO student_course (student_id, course_id, note) VALUES (?, ?, ?)`,
         [student_id, course_id, note]
       );
-      alert('Student course added!');
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
     }
@@ -322,13 +309,11 @@ export class DbService {
         `UPDATE student_course SET student_id = ?, course_id = ?, note = ? WHERE id = ?`,
         [student_id, course_id, note, id]
       );
-      alert('Student course updated!');
     } catch (e) {
       alert('Error updating student course: ' + JSON.stringify(e));
     }
   }
   
-
   // Delete student course
   async deleteStudentCourse(id: number) {
     try {
@@ -336,7 +321,6 @@ export class DbService {
         `DELETE FROM student_course WHERE id = ?`,
         [id]
       );
-      alert('Student course deleted!');
     } catch (e) {
       alert('Error deleting student course: ' + JSON.stringify(e));
     }
