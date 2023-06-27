@@ -8,7 +8,6 @@ import { DbService } from 'src/app/services/Db.service';
   styleUrls: ['./add-student.page.scss'],
 })
 export class AddStudentPage implements OnInit {
-
   student = {
     id: '',
     name: '',
@@ -18,13 +17,19 @@ export class AddStudentPage implements OnInit {
     semester: ''
   }
 
-  constructor(private modalCrtl: ModalController, public database: DbService) { }
+  constructor(private modalCrtl: ModalController, public database: DbService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async newStudent(student: any) {
-    const result = await this.database.addStudent(student.id, student.name, student.email, student.phone, student.career, student.semester);
+    const result = await this.database.addStudent(
+      student.id,
+      student.name,
+      student.email,
+      student.phone,
+      student.career,
+      student.semester
+    );
   }
 
   closeTab() {
