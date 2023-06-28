@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { DbService } from 'src/app/services/Db.service';
 
 @Component({
   selector: 'app-add-teacher',
@@ -7,10 +8,27 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./add-teacher.page.scss'],
 })
 export class AddTeacherPage implements OnInit {
+  teacher = {
+    id: '',
+  name: '',
+  email: '',
+  phone: '',
+  career: ''
+  }
 
-  constructor(private modalCrtl: ModalController) { }
+  constructor(private modalCrtl: ModalController, public database: DbService) { }
 
   ngOnInit() {
+  }
+
+  async newTeacher(teacher: any) {
+    const result = await this.database.addTeacher(
+      teacher.id,
+      teacher.name,
+      teacher.email,
+      teacher.phone,
+      teacher.career
+    );
   }
 
   closeTab() {

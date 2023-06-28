@@ -15,20 +15,23 @@
     </ion-list-header>
 
     <ion-item>
-      <ion-input label="Nombre" labelPlacement="stacked" type="number"></ion-input>
+      <ion-input label="Nombre" [(ngModel)]="course.name" labelPlacement="floating" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Descripcion" labelPlacement="stacked" type="text"></ion-input>
+      <ion-input label="Descripcion" [(ngModel)]="course.description" labelPlacement="floating" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-select label="Profesor" labelPlacement="stacked" placeholder="Seleccione un profesor">
-        <ion-select-option value="1">Op#1</ion-select-option>
-        <ion-select-option value="2">Op#2</ion-select-option>
-        <ion-select-option value="3">Op#3</ion-select-option>
-        <ion-select-option value="4">Op#4</ion-select-option>
+      <ion-select label="Profesor" [(ngModel)]="course.teacher_id" labelPlacement="floating" placeholder="Seleccione un profesor">
+        <ion-select-option *ngFor="let teacher of teachers; let i = index" value="{{teacher.id}}">{{teacher.career}} | {{teacher.name}}</ion-select-option>
       </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="newCourse(course)" expand="block" shape="round" color="success">
+        Agregar curso
+      </ion-button>
     </ion-item>
 
   </ion-list>

@@ -1,28 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Informacion del estudiante</ion-title>
+    <ion-title>Informacion del curso</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true">
   <ion-list>
     <ion-list-header>
       <ion-label>Nombre: {{name}}</ion-label>
     </ion-list-header>
     <ion-item>
-      <ion-label>Cedula: {{id}}</ion-label>
+      <ion-label>Codigo: {{id}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Correo: {{email}}</ion-label>
+      <ion-label>Descripcion: {{description}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Telefono: {{phone}}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Carrera: {{career}}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Semestre: {{semester}}</ion-label>
+      <ion-label>Profesor: {{teacher_id}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-button color="success" expand="block" shape="round" (click)="cerrarModal()">

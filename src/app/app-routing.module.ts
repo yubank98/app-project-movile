@@ -5,7 +5,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },  {
+  },
+  {
     path: 'add-student',
     loadChildren: () => import('./modal/add-student/add-student.module').then( m => m.AddStudentPageModule)
   },
@@ -32,7 +33,15 @@ const routes: Routes = [
   {
     path: 'info-student',
     loadChildren: () => import('./modal/info-student/info-student.module').then( m => m.InfoStudentPageModule)
-  }
+  },
+  {
+    path: 'info-teacher',
+    loadChildren: () => import('./modal/info-teacher/info-teacher.module').then( m => m.InfoTeacherPageModule)
+  },
+  {
+    path: 'info-course',
+    loadChildren: () => import('./modal/info-course/info-course.module').then( m => m.InfoCoursePageModule)
+  },
 
 ];
 @NgModule({

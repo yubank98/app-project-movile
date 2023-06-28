@@ -2,18 +2,17 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-info-student',
-  templateUrl: './info-student.page.html',
-  styleUrls: ['./info-student.page.scss'],
+  selector: 'app-info-teacher',
+  templateUrl: './info-teacher.page.html',
+  styleUrls: ['./info-teacher.page.scss'],
 })
-export class InfoStudentPage implements OnInit {
+export class InfoTeacherPage implements OnInit {
 
   @Input() id: string = '';
   @Input() name: string = '';
   @Input() email: string = '';
   @Input() phone: string = '';
   @Input() career: string = '';
-  @Input() semester: string = '';
 
   constructor(private modalCrtl: ModalController) { }
 
@@ -23,4 +22,5 @@ export class InfoStudentPage implements OnInit {
   cerrarModal() {
     this.modalCrtl.dismiss();
   }
+
 }

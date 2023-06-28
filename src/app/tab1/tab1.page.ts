@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AddStudentPage } from '../modal/add-student/add-student.page';
 import { ListStudentPage } from '../modal/list-student/list-student.page';
@@ -8,9 +8,14 @@ import { ListStudentPage } from '../modal/list-student/list-student.page';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
 
-  constructor(private modalCrtl: ModalController) {}
+  constructor(private modalCrtl: ModalController) {
+    
+  }
+
+  ngOnInit() {
+  }
 
   async addStudent() {
     const modal = await this.modalCrtl.create({

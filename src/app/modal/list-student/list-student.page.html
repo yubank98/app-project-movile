@@ -21,19 +21,19 @@
           <ion-grid>
             <ion-row>
               <ion-col size="4">
-                <ion-chip color="success" [outline]="true">
+                <ion-chip (click)="viewStudent(student)" color="success" [outline]="true">
                   <ion-icon name="eye-outline"></ion-icon>
                   <ion-label>Ver</ion-label>
                 </ion-chip>
               </ion-col>
               <ion-col size="4">
-                <ion-chip color="warning" [outline]="true">
-                  <ion-icon name="pencil-outline" color="warning"></ion-icon>
+                <ion-chip (click)="updateStudent(student.id)" color="warning" [outline]="true">
+                  <ion-icon name="pencil-outline"></ion-icon>
                   <ion-label>Editar</ion-label>
                 </ion-chip>
               </ion-col>
               <ion-col size="4">
-                <ion-chip color="danger" [outline]="true">
+                <ion-chip (click)="deleteStudent(student.id)" color="danger" [outline]="true">
                   <ion-icon name="trash-outline"></ion-icon>
                   <ion-label>Borrar</ion-label>
                 </ion-chip>

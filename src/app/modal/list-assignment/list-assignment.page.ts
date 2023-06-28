@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { Course } from 'src/app/interfaces';
+import { DbService } from 'src/app/services/Db.service';
+import { InfoCoursePage } from '../info-course/info-course.page';
 
 @Component({
   selector: 'app-list-assignment',
@@ -9,40 +11,68 @@ import { Course } from 'src/app/interfaces';
 })
 export class ListAssignmentPage implements OnInit {
 
-  public courses: Course[] = [
-    {
-      id: 1,
-      name: 'Español',
-      description: '',
-      teacher_id: 2,
-    },
-    {
-      id: 2,
-      name: 'Matematicas',
-      description: '',
-      teacher_id: 3,
-    },
-    {
-      id: 3,
-      name: 'Ciencias',
-      description: '',
-      teacher_id: 1,
-    },
-    {
-      id: 4,
-      name: 'Historia',
-      description: '',
-      teacher_id: 4,
-    },
-  ];
+  public courses: Course[] = [];
 
-  constructor(private modalCrtl: ModalController) { }
+  constructor(private modalCrtl: ModalController, private alertCrtl: AlertController, public database: DbService) {
+    this.database.createDatabase().then(() => {
+      this.courseList();
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 
   ngOnInit() {
   }
 
+  courseList() {
+    this.database
+      .getCourses()
+      .then((data) => {
+        this.courses = data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   closeTab() {
     this.modalCrtl.dismiss();
+  }
+
+  async viewCourse(assignmet: any) {
+    const modal = await this.modalCrtl.create({
+      component: InfoCoursePage,
+      componentProps: {
+        id: assignmet.id,
+        name: assignmet.name,
+        description: assignmet.description,
+        teacher_id: assignmet.teacher_id
+      }
+    });
+    await modal.present();
+  }
+
+  async updateCourse(id: any) {}
+
+  async deleteCourse(id: any) {
+    const alert = await this.alertCrtl.create({
+      header: '¡Espera!',
+      subHeader: 'Estas a punto de eliminar un registro',
+      message: '¿Seguro que deseas continuar?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            this.database.deleteCourse(id)
+          }
+        },
+      ]
+    })
+    await alert.present();
   }
 
 }

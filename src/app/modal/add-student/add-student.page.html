@@ -15,27 +15,33 @@
     </ion-list-header>
 
     <ion-item>
-      <ion-input label="Cedula" labelPlacement="stacked" type="number"></ion-input>
+      <ion-input label="Cedula" [(ngModel)]="student.id" labelPlacement="floating" type="number"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Nombre Completo" labelPlacement="stacked" type="text"></ion-input>
+      <ion-input label="Nombre Completo" [(ngModel)]="student.name" labelPlacement="floating" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Correo" labelPlacement="stacked" type="email"></ion-input>
+      <ion-input label="Correo" [(ngModel)]="student.email" labelPlacement="floating" type="email"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Numero telefonico" labelPlacement="stacked" type="text"></ion-input>
+      <ion-input label="Numero telefonico" [(ngModel)]="student.phone" labelPlacement="floating" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Carrera" labelPlacement="stacked" type="text"></ion-input>
+      <ion-input label="Carrera" [(ngModel)]="student.career" labelPlacement="floating" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Semestre" labelPlacement="stacked" type="text"></ion-input>
+      <ion-input label="Semestre" [(ngModel)]="student.semester" labelPlacement="floating" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="newStudent(student)" expand="block" shape="round" color="success">
+        Agregar estudiante
+      </ion-button>
     </ion-item>
 
   </ion-list>
