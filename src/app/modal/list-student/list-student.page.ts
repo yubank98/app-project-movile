@@ -9,6 +9,7 @@ import { InfoStudentPage } from '../info-student/info-student.page';
   templateUrl: './list-student.page.html',
   styleUrls: ['./list-student.page.scss'],
 })
+
 export class ListStudentPage implements OnInit {
   
   public students: Students[] = [];
@@ -60,34 +61,39 @@ export class ListStudentPage implements OnInit {
     await modal.present();
   }
 
-  async updateStudent(id: any) {
+  async updateStudent(student: any) {
     const alert = await this.alertCrtl.create({
       header: 'Editar',
       inputs:[
         {
           placeholder: 'Nombre',
           name: 'name',
-          type: 'text'
+          type: 'text',
+          value: student.name
         },
         {
           placeholder: 'Correo',
           name: 'email',
-          type: 'text'
+          type: 'text',
+          value: student.email
         },
         {
           placeholder: 'Telefono',
           name: 'phone',
-          type: 'text'
+          type: 'text',
+          value: student.phone
         },
         {
           placeholder: 'Carrera',
           name: 'career',
-          type: 'text'
+          type: 'text',
+          value: student.career
         },
         {
           placeholder: 'Semestre',
           name: 'semester',
-          type: 'text'
+          type: 'text',
+          value: student.semester
         },
       ],
       buttons:[
@@ -97,14 +103,14 @@ export class ListStudentPage implements OnInit {
         },
         {
           text: 'Aceptar',
-          handler: (alert) => {
+          handler: data => {
             this.database.updateStudent(
-              alert.name,
-              alert.email,
-              alert.phone,
-              alert.career,
-              alert.semester,
-              id,
+              student.id,
+              data.name,
+              data.email,
+              data.phone,
+              data.career,
+              data.semester
             )
           }
         },

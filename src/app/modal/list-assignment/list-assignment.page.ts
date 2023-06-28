@@ -52,7 +52,43 @@ export class ListAssignmentPage implements OnInit {
     await modal.present();
   }
 
-  async updateCourse(id: any) {}
+  async updateCourse(course: any) {
+    const alert = await this.alertCrtl.create({
+      header: 'Editar',
+      inputs: [
+        {
+          placeholder: 'Nombre',
+          name: 'name',
+          type: 'text',
+          value: course.name
+        },
+        {
+          placeholder: 'Descripcion',
+          name: 'description',
+          type: 'text',
+          value: course.description
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: 'Aceptar',
+          handler: data => {
+            this.database.updateCourse(
+              course.id,
+              data.name,
+              data.description,
+              course.teacher_id
+            )
+          }
+        }
+      ]
+    })
+    await alert.present();
+  }
 
   async deleteCourse(id: any) {
     const alert = await this.alertCrtl.create({

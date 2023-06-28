@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="closeTab()">
+      <ion-icon slot="start" name="close"></ion-icon>
+    </ion-buttons>
+    <ion-title>Seleccion de materias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list>
+
+    <ion-list-header>
+      <ion-label>Seleccione el estudiante y luego la asignatura</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-select label="Estudiante" [(ngModel)]="selection.student_id" labelPlacement="floating" placeholder="Seleccione un profesor">
+        <ion-select-option *ngFor="let student of students; let i = index" value="{{student.id}}">{{student.career}} | {{student.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-select label="Profesor" [(ngModel)]="selection.course_id" labelPlacement="floating" placeholder="Seleccione un profesor">
+        <ion-select-option *ngFor="let course of courses; let i = index" value="{{course.id}}">{{course.id}} | {{course.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Nota" [(ngModel)]="selection.note" labelPlacement="floating" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="addSelection(selection)" expand="block" shape="round" color="success">
+        Agregar curso
+      </ion-button>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

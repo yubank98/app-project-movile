@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AddStudentPage } from '../modal/add-student/add-student.page';
 import { ListStudentPage } from '../modal/list-student/list-student.page';
+import { SelectAssignmentPage } from '../modal/select-assignment/select-assignment.page';
 
 @Component({
   selector: 'app-tab1',
@@ -24,7 +25,12 @@ export class Tab1Page implements OnInit {
     await modal.present();
   }
 
-  async selectAssignment() {}
+  async selectAssignment() {
+    const modal = await this.modalCrtl.create({
+      component: SelectAssignmentPage
+    });
+    await modal.present();
+  }
 
   async studentList() {
     const modal = await this.modalCrtl.create({

@@ -13,7 +13,7 @@
   >
     <ion-accordion value="{{course.id}}">
       <ion-item slot="header">
-        <ion-label>{{course.id}} | {{course.name}}</ion-label>
+        <ion-label>{{course.name}} | {{course.id}}</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
         <div class="ion-padding" slot="content">
@@ -26,7 +26,7 @@
                 </ion-chip>
               </ion-col>
               <ion-col size="4">
-                <ion-chip (click)="updateCourse(course.id)" color="warning" [outline]="true">
+                <ion-chip (click)="updateCourse(course)" color="warning" [outline]="true">
                   <ion-icon name="pencil-outline" color="warning"></ion-icon>
                   <ion-label>Editar</ion-label>
                 </ion-chip>
