@@ -43,7 +43,7 @@ export class DbService {
       );
 
       await this.databaseObj.executeSql(
-        `CREATE TABLE IF NOT EXISTS student_course_note (id INTEGER PRIMARY KEY AUTOINCREMENT, student_id INTEGER, course_id INTEGER, note INTEGER, FOREIGN KEY(student_id) REFERENCES student(id), FOREIGN KEY(course_id) REFERENCES course(id))`,
+        `CREATE TABLE IF NOT EXISTS student_course (id INTEGER PRIMARY KEY AUTOINCREMENT, student_id INTEGER, course_id INTEGER, note INTEGER, FOREIGN KEY(student_id) REFERENCES student(id), FOREIGN KEY(course_id) REFERENCES course(id))`,
         []
       );
     } catch (e) {
