@@ -1,13 +1,38 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>add-assignment</ion-title>
+    <ion-buttons slot="start" (click)="closeTab()">
+      <ion-icon slot="start" name="close"></ion-icon>
+    </ion-buttons>
+    <ion-title>Agregar curso</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">add-assignment</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list>
+
+    <ion-list-header>
+      <ion-label>Agregar curso nuevo</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-input label="Nombre" [(ngModel)]="course.name" labelPlacement="floating" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Descripcion" [(ngModel)]="course.description" labelPlacement="floating" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-select label="Profesor" [(ngModel)]="course.teacher_id" labelPlacement="floating" placeholder="Seleccione un profesor">
+        <ion-select-option *ngFor="let teacher of teachers; let i = index" value="{{teacher.id}}">{{teacher.career}} | {{teacher.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="newCourse(course)" expand="block" shape="round" color="success">
+        Agregar curso
+      </ion-button>
+    </ion-item>
+
+  </ion-list>
 </ion-content>
