@@ -136,7 +136,7 @@ export class DbService {
     try {
       await this.databaseObj.executeSql(
         `INSERT INTO teacher (id,name, email, phone, career) VALUES (?, ?, ?, ?, ?)`,
-        [name, email, phone, career]
+        [id, name, email, phone, career]
       );
       alert('Teacher added!');
     } catch (e) {

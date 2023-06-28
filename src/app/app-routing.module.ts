@@ -30,6 +30,18 @@ const routes: Routes = [
     path: 'list-student',
     loadChildren: () => import('./modal/list-student/list-student.module').then( m => m.ListStudentPageModule)
   },
+  {
+    path: 'info-student',
+    loadChildren: () => import('./modal/info-student/info-student.module').then( m => m.InfoStudentPageModule)
+  },
+  {
+    path: 'info-teacher',
+    loadChildren: () => import('./modal/info-teacher/info-teacher.module').then( m => m.InfoTeacherPageModule)
+  },
+  {
+    path: 'info-course',
+    loadChildren: () => import('./modal/info-course/info-course.module').then( m => m.InfoCoursePageModule)
+  },
 
 ];
 @NgModule({
