@@ -47,7 +47,7 @@ export class DbService {
         []
       );
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error Create Database: ' + JSON.stringify(e));
     }
   }
 
@@ -66,7 +66,7 @@ export class DbService {
         [id, name, email, phone, career, semester]
       );
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error Student add: ' + JSON.stringify(e));
     }
   }
 
@@ -80,7 +80,7 @@ export class DbService {
       }
       return students;
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error load student: ' + JSON.stringify(e));
       return [];
     }
   }
@@ -94,7 +94,7 @@ export class DbService {
         [name, email, phone, career, semester, id]
       );
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error update student: ' + JSON.stringify(e));
     }
   }
   
@@ -104,7 +104,7 @@ export class DbService {
     try {
       await this.databaseObj.executeSql(`DELETE FROM student WHERE id = ?`, [id]);
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error delete student: ' + JSON.stringify(e));
     }
   }
   
@@ -119,7 +119,7 @@ export class DbService {
         return null;
       }
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error get student: ' + JSON.stringify(e));
       return null;
     }
   }
@@ -133,7 +133,7 @@ export class DbService {
         [name, email, phone, career]
       );
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error to add teacher: ' + JSON.stringify(e));
     }
   }
   
@@ -148,7 +148,7 @@ export class DbService {
       }
       return teachers;
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error get all teachers: ' + JSON.stringify(e));
       return [];
     }
   }
@@ -162,7 +162,7 @@ export class DbService {
         [name, email, phone, career, id]
       );
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error update teacher: ' + JSON.stringify(e));
     }
   }
   
@@ -172,7 +172,7 @@ export class DbService {
     try {
       await this.databaseObj.executeSql(`DELETE FROM teacher WHERE id = ?`, [id]);
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error delete teacher: ' + JSON.stringify(e));
     }
   }
   
@@ -183,7 +183,7 @@ export class DbService {
       const res = await this.databaseObj.executeSql(`SELECT * FROM teacher WHERE name = ?`, [name]);
       return res.rows.item(0);
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error get for name teacher: ' + JSON.stringify(e));
       return null;
     }
   }
@@ -197,7 +197,7 @@ export class DbService {
         [name, description, teacher_id]
       );
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error to add course: ' + JSON.stringify(e));
     }
   }
   
@@ -212,7 +212,7 @@ export class DbService {
       }
       return courses;
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error get all course: ' + JSON.stringify(e));
       return [];
     }
   }
@@ -226,7 +226,7 @@ export class DbService {
         [name, description, teacher_id, id]
       );
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error update course: ' + JSON.stringify(e));
     }
   }
   
@@ -236,7 +236,7 @@ export class DbService {
     try {
       await this.databaseObj.executeSql(`DELETE FROM course WHERE id = ?`, [id]);
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error delete course: ' + JSON.stringify(e));
     }
   }
   
@@ -247,7 +247,7 @@ export class DbService {
       const res = await this.databaseObj.executeSql(`SELECT * FROM course WHERE name = ?`, [name]);
       return res.rows.item(0);
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error get once course: ' + JSON.stringify(e));
     }
   }
   
@@ -259,7 +259,7 @@ export class DbService {
       const res = await this.databaseObj.executeSql(`SELECT * FROM course WHERE teacher_id = ?`, [teacher.id]);
       return res.rows.item(0);
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error get teacher course : ' + JSON.stringify(e));
     }
   }
   
@@ -272,7 +272,7 @@ export class DbService {
         [student_id, course_id, note]
       );
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error add new course to student: ' + JSON.stringify(e));
     }
   }
   
@@ -292,7 +292,7 @@ export class DbService {
   
       return courses;
     } catch (e) {
-      alert('Error: ' + JSON.stringify(e));
+      alert('Error get all course once student: ' + JSON.stringify(e));
     }
   }
   
