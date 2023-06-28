@@ -97,14 +97,14 @@ export class ListStudentPage implements OnInit {
         },
         {
           text: 'Aceptar',
-          handler: (alert) => {
+          handler: data => {
             this.database.updateStudent(
-              alert.name,
-              alert.email,
-              alert.phone,
-              alert.career,
-              alert.semester,
               id,
+              data.name,
+              data.email,
+              data.phone,
+              data.career,
+              data.semester
             )
           }
         },
