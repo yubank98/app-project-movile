@@ -1,4 +1,4 @@
-#Wed Jun 28 11:34:24 CST 2023
+#Wed Jun 28 12:43:51 CST 2023
 base.0=C\:\\Users\\danie\\Documents\\GitHub\\app-project-movile\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\danie\\Documents\\GitHub\\app-project-movile\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\14\\classes.dex
 base.2=C\:\\Users\\danie\\Documents\\GitHub\\app-project-movile\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\2\\classes.dex

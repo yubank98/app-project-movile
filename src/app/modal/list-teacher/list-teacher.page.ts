@@ -54,7 +54,56 @@ export class ListTeacherPage implements OnInit {
     await modal.present();
   }
 
-  async updateTeacher(id: any) {}
+  async updateTeacher(teacher: any) {
+    const alert = await this.alertCrtl.create({
+      header: 'Editar',
+      inputs: [
+        {
+          placeholder: 'Nombre',
+          name: 'name',
+          type: 'text',
+          value: teacher.name
+        },
+        {
+          placeholder: 'Correo',
+          name: 'email',
+          type: 'text',
+          value: teacher.email
+        },
+        {
+          placeholder: 'Telefono',
+          name: 'phone',
+          type: 'text',
+          value: teacher.phone
+        },
+        {
+          placeholder: 'Carrera',
+          name: 'career',
+          type: 'text',
+          value:teacher.career
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: 'Aceptar',
+          handler: data => {
+            this.database.updateTeacher(
+              teacher.id,
+              data.name,
+              data.email,
+              data.phone,
+              data.career
+            )
+          }
+        }
+      ]
+    })
+    await alert.present();
+  }
 
   async deleteTeacher(id: any) {
     const alert = await this.alertCrtl.create({
