@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { Students } from 'src/app/interfaces/index';
+import { StudentCourse, Students } from 'src/app/interfaces/index';
 import { DbService } from 'src/app/services/Db.service';
 import { InfoStudentPage } from '../info-student/info-student.page';
+import { ListCoursePage } from '../list-course/list-course.page';
 
 @Component({
   selector: 'app-list-student',
@@ -13,6 +14,7 @@ import { InfoStudentPage } from '../info-student/info-student.page';
 export class ListStudentPage implements OnInit {
   
   public students: Students[] = [];
+  public courses: StudentCourse[] = [];
 
   constructor(
     private modalCrtl: ModalController,
@@ -29,7 +31,8 @@ export class ListStudentPage implements OnInit {
       });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   closeTab() {
     this.modalCrtl.dismiss();
@@ -60,6 +63,20 @@ export class ListStudentPage implements OnInit {
     });
     await modal.present();
   }
+
+  async viewCourses(id : any) {
+    await this.database.getCourseStudent(id).then((data) => {
+      this.courses = data;
+    })
+    const modal = await this.modalCrtl.create({
+      component: ListCoursePage,
+      componentProps: {
+        courses : this.courses  
+      }
+    });
+    await modal.present();
+  }
+
 
   async updateStudent(student: any) {
     const alert = await this.alertCrtl.create({
@@ -111,7 +128,10 @@ export class ListStudentPage implements OnInit {
               data.phone,
               data.career,
               data.semester
-            )
+            ).then(() => {
+              this.studentList();
+            }
+            );
           }
         },
       ]
@@ -132,12 +152,18 @@ export class ListStudentPage implements OnInit {
         {
           text: 'Aceptar',
           handler: () => {
-            this.database.deleteStudent(id)
+            this.database.deleteStudent(id).then(() => {
+              this.studentList();
+            }
+            );
           }
         },
       ]
     });
-  
     await alert.present();
+    
   }
+
+
+
 }

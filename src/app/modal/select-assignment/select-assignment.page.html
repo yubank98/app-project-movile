@@ -21,8 +21,8 @@
     </ion-item>
 
     <ion-item>
-      <ion-select label="Profesor" [(ngModel)]="selection.course_id" labelPlacement="floating" placeholder="Seleccione un profesor">
-        <ion-select-option *ngFor="let course of courses; let i = index" value="{{course.id}}">{{course.id}} | {{course.name}}</ion-select-option>
+      <ion-select label="Curso" [(ngModel)]="selection.course_id" labelPlacement="floating" placeholder="Seleccione un profesor">
+        <ion-select-option *ngFor="let course of courses; let i = index" value="{{course.id}}">{{course.name}}</ion-select-option>
       </ion-select>
     </ion-item>
 

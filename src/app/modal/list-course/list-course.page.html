@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Cursos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true" class="ion-padding">
+    <ion-accordion-group *ngFor="let course of courses; let i = index">
+      <ion-accordion value="{{course.id}}">
+        <ion-item slot="header">
+          <ion-label>{{course.course.name}} | {{course.note}}</ion-label>
+        </ion-item>
+      </ion-accordion>
+    </ion-accordion-group>
+    <ion-item>
+      <ion-button color="success" expand="block" shape="round" (click)="cerrarModal()">
+        Salir
+      </ion-button>
+    </ion-item>
+  </ion-content>

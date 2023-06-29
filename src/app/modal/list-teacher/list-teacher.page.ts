@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { Teachers } from 'src/app/interfaces';
+import { Teachers, Course } from 'src/app/interfaces';
 import { DbService } from 'src/app/services/Db.service';
 import { InfoTeacherPage } from '../info-teacher/info-teacher.page';
+import { ListCoursePage } from '../list-course/list-course.page';
 
 @Component({
   selector: 'app-list-teacher',
@@ -12,6 +13,7 @@ import { InfoTeacherPage } from '../info-teacher/info-teacher.page';
 export class ListTeacherPage implements OnInit {
 
   public teachers: Teachers[] = [];
+  public courses: Course[] = [];
 
   constructor(private modalCrtl: ModalController, private alertCrtl: AlertController, public database: DbService) {
     this.database.createDatabase().then(() => {
@@ -49,6 +51,19 @@ export class ListTeacherPage implements OnInit {
         email: teacher.email,
         phone: teacher.phone,
         career: teacher.career,
+      }
+    });
+    await modal.present();
+  }
+
+  async viewCourses(id : any) {
+    await this.database.getCourseTeacher(id).then((data) => {
+      this.courses = data;
+    })
+    const modal = await this.modalCrtl.create({
+      component: ListCoursePage,
+      componentProps: {
+        courses : this.courses
       }
     });
     await modal.present();
@@ -97,7 +112,10 @@ export class ListTeacherPage implements OnInit {
               data.email,
               data.phone,
               data.career
-            )
+            ).then(() => {
+              this.teacherList();
+            }
+            );
           }
         }
       ]
@@ -118,7 +136,10 @@ export class ListTeacherPage implements OnInit {
         {
           text: 'Aceptar',
           handler: () => {
-            this.database.deleteTeacher(id)
+            this.database.deleteTeacher(id).then(() => {
+              this.teacherList();
+            }
+            );
           }
         },
       ]

@@ -28,6 +28,16 @@
             </ion-col>
             <ion-col size="auto">
               <ion-chip
+                (click)="viewCourses(student.id)"
+                color="Primary"
+                [outline]="true"
+              >
+                <ion-icon name="library-outline"></ion-icon>
+                <ion-label>Cursos</ion-label>
+              </ion-chip>
+            </ion-col>
+            <ion-col size="auto">
+              <ion-chip
                 (click)="updateStudent(student)"
                 color="warning"
                 [outline]="true"

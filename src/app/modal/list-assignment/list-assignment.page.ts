@@ -82,7 +82,10 @@ export class ListAssignmentPage implements OnInit {
               data.name,
               data.description,
               course.teacher_id
-            )
+            ).then(() => {
+              this.courseList();
+            }
+            );
           }
         }
       ]
@@ -103,7 +106,10 @@ export class ListAssignmentPage implements OnInit {
         {
           text: 'Aceptar',
           handler: () => {
-            this.database.deleteCourse(id)
+            this.database.deleteCourse(id).then(() => {
+              this.courseList();
+            }
+            );
           }
         },
       ]

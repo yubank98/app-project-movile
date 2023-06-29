@@ -328,14 +328,17 @@ export class DbService {
   }
 
   // get course for name teacher
-  async getCourseTeacher(name: string): Promise<any> {
+  async getCourseTeacher(id: number): Promise<any> {
     try {
-      const teacher = await this.getTeacherforName(name);
       const res = await this.databaseObj.executeSql(
         `SELECT * FROM course WHERE teacher_id = ?`,
-        [teacher.id]
+        [id]
       );
-      return res.rows.item(0);
+      const courses: any[] = [];
+      courses.push({
+        course: res.rows.item(0),
+      });
+      return courses;
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
     }
