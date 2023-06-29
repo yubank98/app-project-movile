@@ -73,5 +73,6 @@ export class SelectAssignmentPage implements OnInit {
       selection.course_id,
       selection.note
     )
+    this.closeTab();
   }
 }

@@ -41,7 +41,8 @@ const routes: Routes = [
   {
     path: 'info-course',
     loadChildren: () => import('./modal/info-course/info-course.module').then( m => m.InfoCoursePageModule)
-  },  {
+  },
+  {
     path: 'select-assignment',
     loadChildren: () => import('./modal/select-assignment/select-assignment.module').then( m => m.SelectAssignmentPageModule)
   },

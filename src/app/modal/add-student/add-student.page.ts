@@ -30,6 +30,8 @@ export class AddStudentPage implements OnInit {
       student.career,
       student.semester
     );
+    alert('New student created');
+    this.closeTab();
   }
 
   closeTab() {

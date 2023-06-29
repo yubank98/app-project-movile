@@ -29,6 +29,8 @@ export class AddTeacherPage implements OnInit {
       teacher.phone,
       teacher.career
     );
+    alert('New teacher created');
+    this.closeTab();
   }
 
   closeTab() {

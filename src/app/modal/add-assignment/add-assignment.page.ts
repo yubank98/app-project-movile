@@ -36,6 +36,7 @@ export class AddAssignmentPage implements OnInit {
       course.description,
       course.teacher_id
     );
+    this.closeTab();
   }
 
   teacherList() {
