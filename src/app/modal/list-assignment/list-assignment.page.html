@@ -8,10 +8,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-accordion-group
-    *ngFor="let course of courses; let i = index"
-  >
-    <ion-accordion value="{{course.id}}">
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let course of courses; let i = index" value="{{course.id}}">
       <ion-item slot="header">
         <ion-label>{{course.name}} | {{course.id}}</ion-label>
       </ion-item>

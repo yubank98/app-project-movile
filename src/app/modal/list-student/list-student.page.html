@@ -8,8 +8,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-accordion-group *ngFor="let student of students; let i = index">
-    <ion-accordion value="{{student.id}}">
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let student of students; let i = index" value="{{student.id}}">
       <ion-item slot="header">
         <ion-label>{{student.name}} | {{student.id}}</ion-label>
       </ion-item>

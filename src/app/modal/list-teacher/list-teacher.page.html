@@ -9,10 +9,8 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   
-  <ion-accordion-group
-    *ngFor="let teacher of teachers; let i = index"
-  >
-    <ion-accordion value="{{teacher.id}}">
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let teacher of teachers; let i = index" value="{{teacher.id}}">
       <ion-item slot="header">
         <ion-label>{{teacher.name}} | {{teacher.id}}</ion-label>
       </ion-item>
