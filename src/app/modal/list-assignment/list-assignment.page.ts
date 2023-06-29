@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { Course } from 'src/app/interfaces';
+import { Course, Teachers} from 'src/app/interfaces';
 import { DbService } from 'src/app/services/Db.service';
 import { InfoCoursePage } from '../info-course/info-course.page';
 
@@ -12,6 +12,7 @@ import { InfoCoursePage } from '../info-course/info-course.page';
 export class ListAssignmentPage implements OnInit {
 
   public courses: Course[] = [];
+  public teachers: Teachers[] = [];
 
   constructor(private modalCrtl: ModalController, private alertCrtl: AlertController, public database: DbService) {
     this.database.createDatabase().then(() => {
@@ -39,14 +40,19 @@ export class ListAssignmentPage implements OnInit {
     this.modalCrtl.dismiss();
   }
 
-  async viewCourse(assignmet: any) {
+  async viewCourse(course: any) {;
+    //search teacher
+    this.database.getTeacherforId(course.teacher_id).then((data) => {
+      this.teachers = data;
+    })  
+
     const modal = await this.modalCrtl.create({
       component: InfoCoursePage,
       componentProps: {
-        id: assignmet.id,
-        name: assignmet.name,
-        description: assignmet.description,
-        teacher_id: assignmet.teacher_id
+        id: course.id,
+        name: course.name,
+        description: course.description,
+        teacher: this.teachers,
       }
     });
     await modal.present();

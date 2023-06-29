@@ -11,7 +11,7 @@ export class InfoCoursePage implements OnInit {
   @Input() id: string ='';
   @Input() name: string ='';
   @Input() description: string ='';
-  @Input() teacher_id: string ='';
+  @Input() teacher: string ='';
 
   constructor(private modalCrtl: ModalController) { }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { Teachers } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -201,13 +202,14 @@ export class DbService {
   }
 
   //search for name
-  async getTeacherforName(name: string): Promise<any> {
+  async getTeacherforId(id: number): Promise<any> {
     try {
       const res = await this.databaseObj.executeSql(
-        `SELECT * FROM teacher WHERE name = ?`,
-        [name]
+        `SELECT * FROM teacher WHERE id = ?`,
+        [id]
       );
-      return res.rows.item(0);
+      
+      return res.rows.item(0).name;
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
       return null;
@@ -270,6 +272,8 @@ export class DbService {
       return null;
     }
   }
+
+
 
   // Get all courses
   async getCourses(): Promise<any[]> {
