@@ -221,14 +221,13 @@ export class DbService {
     teacher_id: number
   ): Promise<void> {
     try {
-      if(await this.getCourseforName(name, teacher_id)){
+      if (await this.getCourseforName(name, teacher_id)) {
         await this.databaseObj.executeSql(
           `INSERT INTO course (name, description, teacher_id) VALUES (?, ?, ?)`,
           [name, description, teacher_id]
         );
         alert('New course created');
-
-      }else{
+      } else {
         alert('already register course with this name and teacher');
       }
     } catch (e) {
@@ -251,6 +250,24 @@ export class DbService {
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
       throw e;
+    }
+  }
+
+  //get course for id
+  async getCourseforId(id: number): Promise<any> {
+    try {
+      const res = await this.databaseObj.executeSql(
+        `SELECT * FROM course WHERE id = ?`,
+        [id]
+      );
+      if (res.rows.length > 0) {
+        return res.rows.item(0);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      alert('Error: ' + JSON.stringify(e));
+      return null;
     }
   }
 
@@ -349,11 +366,17 @@ export class DbService {
         [id]
       );
 
-      let courses: any[] = [];
+      //search course for id and add to array note and course info
+      const courses: any[] = [];
       for (let index = 0; index < res.rows.length; index++) {
-        courses.push(res.rows.item(index));
+        const course = await this.getCourseforId(
+          res.rows.item(index).course_id
+        );
+        courses.push({
+          course: course,
+          note: res.rows.item(index).note,
+        });
       }
-
       return courses;
     } catch (e) {
       alert('Error: ' + JSON.stringify(e));
