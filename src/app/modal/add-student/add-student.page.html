@@ -1,13 +1,48 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>add-student</ion-title>
+    <ion-buttons slot="start" (click)="closeTab()">
+      <ion-icon slot="start" name="close"></ion-icon>
+    </ion-buttons>
+    <ion-title>Agregar estudiante</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">add-student</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list>
+
+    <ion-list-header>
+      <ion-label>Agregar estudiante nuevo</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-input label="Cedula" [(ngModel)]="student.id" labelPlacement="floating" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Nombre Completo" [(ngModel)]="student.name" labelPlacement="floating" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Correo" [(ngModel)]="student.email" labelPlacement="floating" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Numero telefonico" [(ngModel)]="student.phone" labelPlacement="floating" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Carrera" [(ngModel)]="student.career" labelPlacement="floating" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Semestre" [(ngModel)]="student.semester" labelPlacement="floating" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="newStudent(student)" expand="block" shape="round" color="success">
+        Agregar estudiante
+      </ion-button>
+    </ion-item>
+
+  </ion-list>
 </ion-content>

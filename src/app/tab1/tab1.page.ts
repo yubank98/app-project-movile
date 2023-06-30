@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AddStudentPage } from '../modal/add-student/add-student.page';
-import { DbService } from '../services/Db.service';
+import { ListStudentPage } from '../modal/list-student/list-student.page';
+import { SelectAssignmentPage } from '../modal/select-assignment/select-assignment.page';
 
 @Component({
   selector: 'app-tab1',
@@ -9,41 +10,32 @@ import { DbService } from '../services/Db.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
-  students: any = []
 
-  constructor(private modalCrtl: ModalController, public database: DbService) {
-    this.database.createDatabase().then(() => {
-      this.studentList();
-    }).catch(error => {
-      console.log(error);
-    }
-    );
+  constructor(private modalCrtl: ModalController) {
+    
   }
 
   ngOnInit() {
   }
 
   async addStudent() {
-    //vector with data student ramdom real
-    const student = {
-      name: 'Juan',
-      email: 'luis@hotmail.com',
-      phone: '1234567890',
-      career: 'Ing. Sistemas',
-      semester: '9'
-    };
-
-    //add student elemtents to database
-    const result = await this.database.addStudent(student.name, student.email, student.phone, student.career, student.semester);
-
+    const modal = await this.modalCrtl.create({
+      component: AddStudentPage
+    });
+    await modal.present();
   }
 
-  studentList() {
-    this.database.getStudents().then(data => {
-      this.students = data;
-    }).catch(error => {
-      console.log(error);
-
+  async selectAssignment() {
+    const modal = await this.modalCrtl.create({
+      component: SelectAssignmentPage
     });
+    await modal.present();
+  }
+
+  async studentList() {
+    const modal = await this.modalCrtl.create({
+      component: ListStudentPage
+    });
+    await modal.present();
   }
 }

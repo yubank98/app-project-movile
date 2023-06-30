@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="closeTab()">
+      <ion-icon slot="start" name="close"></ion-icon>
+    </ion-buttons>
+    <ion-title>Lista de profesores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let teacher of teachers; let i = index" value="{{teacher.id}}">
+      <ion-item slot="header">
+        <ion-label>{{teacher.name}} | {{teacher.id}}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="auto">
+              <ion-chip (click)="viewTeacher(teacher)" color="success" [outline]="true">
+                <ion-icon name="eye-outline"></ion-icon>
+                <ion-label>Ver</ion-label>
+              </ion-chip>
+            </ion-col>
+            <ion-col size="auto">
+              <ion-chip
+                (click)="viewCourses(teacher.id)"
+                color="Primary"
+                [outline]="true"
+              >
+                <ion-icon name="library-outline"></ion-icon>
+                <ion-label>Cursos</ion-label>
+              </ion-chip>
+            </ion-col>
+            <ion-col size="auto">
+              <ion-chip (click)="updateTeacher(teacher)" color="warning" [outline]="true">
+                <ion-icon name="pencil-outline" color="warning"></ion-icon>
+                <ion-label>Editar</ion-label>
+              </ion-chip>
+            </ion-col>
+            <ion-col size="auto">
+              <ion-chip (click)="deleteTeacher(teacher.id)" color="danger" [outline]="true">
+                <ion-icon name="trash-outline"></ion-icon>
+                <ion-label>Borrar</ion-label>
+              </ion-chip>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+
+</ion-content>
