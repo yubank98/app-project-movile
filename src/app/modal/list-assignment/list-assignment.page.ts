@@ -12,7 +12,7 @@ import { InfoCoursePage } from '../info-course/info-course.page';
 export class ListAssignmentPage implements OnInit {
 
   public courses: Course[] = [];
-  public teachers: Teachers[] = [];
+  teacher!: String;
 
   constructor(private modalCrtl: ModalController, private alertCrtl: AlertController, public database: DbService) {
     this.database.createDatabase().then(() => {
@@ -42,8 +42,8 @@ export class ListAssignmentPage implements OnInit {
 
   async viewCourse(course: any) {;
     //search teacher
-    this.database.getTeacherforId(course.teacher_id).then((data) => {
-      this.teachers = data;
+   await this.database.getTeacherforId(course.teacher_id).then((data) => {
+      this.teacher = data;
     })  
 
     const modal = await this.modalCrtl.create({
@@ -52,7 +52,7 @@ export class ListAssignmentPage implements OnInit {
         id: course.id,
         name: course.name,
         description: course.description,
-        teacher: this.teachers,
+        teacher: this.teacher,
       }
     });
     await modal.present();
